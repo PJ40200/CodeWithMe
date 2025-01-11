@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login & Signup</title>
+  <link rel="stylesheet" href="signin.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Login Form -->
+    <div class="form-box" id="login-box">
+      <h2>Login</h2>
+      <form id="login-form">
+        <div class="input-group">
+          <label for="login-email">Email</label>
+          <input type="text" id="login-email" placeholder="Enter your Email Id">
+        </div>
+        <div class="input-group">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" placeholder="Enter your password">
+        </div>
+        <button type="submit" class="btn">Submit</button>
+        <p class="toggle-text">Don't have an account? <span id="show-signup">Sign up</span></p>
+      </form>
+    </div>
+
+    <!-- Signup Form -->
+    <div class="form-box" id="signup-box">
+      <h2>Signup</h2>
+      <form id="signup-form">
+        <div class="input-group">
+          <label for="signup-email">Email</label>
+          <input type="text" id="signup-email" placeholder="Enter you Email Id">
+        </div>
+        <div class="input-group">
+            <label for="signup-username">Username</label>
+            <input type="text" id="signup-username" placeholder="Choose a username">
+          </div>
+        <div class="input-group">
+          <label for="signup-password">Password</label>
+          <input type="password" id="signup-password" placeholder="Create a password">
+        </div>
+        <button type="submit" class="btn">Submit</button>
+        <p class="toggle-text">Already have an account? <span id="show-login">Log in</span></p>
+      </form>
+    </div>
+  </div>
+
+  <script src="signin.js"></script>
+</body>
+</html>
