@@ -34,30 +34,73 @@
       <p>Learn Generative AI, ChatGPT, and more.</p>
       <span>4.5 ★ (42,810)</span>
       <strong>₹2,699</strong>
+      <button class="buy-now" data-course="ChatGPT Complete Guide" data-price="2699">Buy Now</button>
     </div>
-
+  
     <div class="course" data-url="course.html">
       <img src="course2.png" alt="Course 2">
       <h3>AI-Powered Copywriting</h3>
       <p>Master AI tools for content creation.</p>
       <span>4.5 ★ (1,713)</span>
       <strong>₹3,099</strong>
+      <button class="buy-now" data-course="AI-Powered Copywriting" data-price="3099">Buy Now</button>
     </div>
-
+  
     <div class="course" data-url="course.html">
       <img src="course3.png" alt="Course 3">
       <h3>Digital Marketing Assistants</h3>
       <p>Learn ChatGPT & Midjourney for marketing.</p>
       <span>4.5 ★ (449)</span>
       <strong>₹799</strong>
+      <button class="buy-now" data-course="Digital Marketing Assistants" data-price="799">Buy Now</button>
     </div>
   </section>
-
+  
   <!-- Pop-up Modal -->
   <div id="popup" class="popup hidden">
     <p>Thank you for enrolling!</p>
     <button id="close-popup">Close</button>
   </div>
+
+  <!-- Stripe JS -->
+  <script src="https://js.stripe.com/v3/"></script>
+  
+  <script>
+    const stripe = Stripe('pk_test_51QebY5PQNLZrYN347wL02n1brGcpY75YN1pM6od9JDbNubqdDyHIWJG7cXuQslB9VITHz7F4hekir52ZwZXWv9pS00G3jcToJH'); // Replace with your public Stripe key
+    
+    // Handle 'Buy Now' button click
+    document.querySelectorAll('.buy-now').forEach(button => {
+      button.addEventListener('click', async (event) => {
+        const courseName = event.target.getAttribute('data-course');
+        const price = event.target.getAttribute('data-price');
+        
+        try {
+          // Make an API request to create a checkout session
+          const response = await fetch('http://localhost:5001/create-checkout-session', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ courseName, price }),
+          });
+          const session = await response.json();
+
+          // Redirect to Stripe Checkout
+          const { error } = await stripe.redirectToCheckout({ sessionId: session.id });
+          if (error) {
+            console.error('Error redirecting to checkout:', error);
+          }
+        } catch (error) {
+          console.error('Error creating session:', error);
+        }
+      });
+    });
+
+    // Close popup modal
+    document.getElementById('close-popup').addEventListener('click', () => {
+      document.getElementById('popup').classList.add('hidden');
+    });
+  </script>
 
   <script src="c1.js"></script>
 </body>
