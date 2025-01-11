@@ -19,6 +19,39 @@ body {
   header, .categories, .courses {
     margin-bottom: 20px;
   }
+  /* Basic Button Styling */
+.buy-now {
+  background: linear-gradient(to bottom, #34b0b0, #000000);/* Bright orange color */
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover Effect */
+.buy-now:hover {
+  background-color: #e04e2d; /* Slightly darker orange */
+  transform: scale(1.05); /* Slightly increase button size */
+}
+
+/* Focus Effect (when button is clicked or in focus) */
+.buy-now:focus {
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 0 3px rgba(255, 87, 51, 0.4); /* Add a glow effect */
+}
+
+/* Disabled State */
+.buy-now:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
   
   /* Popup styles */
   .popup {
